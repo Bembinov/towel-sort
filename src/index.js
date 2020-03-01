@@ -1,19 +1,13 @@
-
 // You should implement your task here.
 
 module.exports = function towelSort (matrix) {
-	if (matrix === undefined || matrix.length === 0) {
-	return[];
-  }
-  let matrixString = [];
-  matrix.forEach( (array, index) => {
-    if (index % 2 === 0) {
-      matrixString = [...matrixString, ...array];
-    } 
-	else {
-      matrixString = [...matrixString, ...array.reverse()];
-    }
-  }
-  )
-  return matrixString;
-}	
+  if (!matrix || matrix.length === 0) 
+	  return [];
+    return new Array().concat( ...matrix.map((item, x) => {
+        if (x % 2 === 0) {
+            return item.sort((a, b) => a - b)
+        } else {
+            return item.sort((a, b) => b - a)
+        }    
+    }));
+}
